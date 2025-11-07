@@ -42,7 +42,6 @@ This application is built with **Flutter** and leverages a set of modern, reliab
 | `equatable` | Simplifies **value comparisons** within BLoC states and events. | `^2.0.5` |
 | `intl` | Manages **date and localization formatting** for displaying publication times and metadata. | `^0.18.0` |
 | `url_launcher` | Opens **external news links** directly in the system browser. | `^6.1.10` |
-| `cupertino_icons` | Provides **iOS-style icons** for use across the UI (useful for cross-platform or Android styling). | `^1.0.8` |
 | `flutter_lints` | Ensures **best coding practices and linting rules** during development. | `^5.0.0` |
 
 
