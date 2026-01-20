@@ -5,7 +5,7 @@
 **🗞️ Flutter application to explore and read news quickly, with a modern and visually appealing design.**
 
 [![Flutter](https://img.shields.io/badge/Flutter-02569B?logo=flutter&logoColor=white&style=for-the-badge)](https://flutter.dev/)
-[![Status](https://img.shields.io/badge/Status-En%20Desarrollo-blue?style=for-the-badge)](#-estado-actual)
+[![Status](https://img.shields.io/badge/Status-In%20Development-blue?style=for-the-badge)](#-current-status)
 
 </div>
 
@@ -42,7 +42,11 @@ This application is built with **Flutter** and leverages a set of modern, reliab
 | `equatable` | Simplifies **value comparisons** within BLoC states and events. | `^2.0.5` |
 | `intl` | Manages **date and localization formatting** for displaying publication times and metadata. | `^0.18.0` |
 | `url_launcher` | Opens **external news links** directly in the system browser. | `^6.1.10` |
+| `get_it` | **Service Locator** for dependency injection, decoupling the interface from a concrete implementation. | `^7.6.7` |
+| `flutter_dotenv` | Manages **environment variables** securely (e.g., API keys). | `^5.1.0` |
+| `cupertino_icons` | Provides **iOS-style icons** for use across the UI (useful for cross-platform or Android styling). | `^1.0.8` |
 | `flutter_lints` | Ensures **best coding practices and linting rules** during development. | `^5.0.0` |
+| `flutter_launcher_icons` | Tool to **generate app icons** for Android/iOS. | `^0.13.1` |
 
 
 🧩 **Framework:** [Flutter](https://flutter.dev/)  
@@ -57,11 +61,14 @@ The project follows a **modular and scalable architecture**, separating presenta
 
 | File / Folder | Description |
 | :--- | :--- |
+| `.env` | **Environment variables file**. Stores sensitive data like API keys. (Not versioned) |
 | `lib/main.dart` | The **main entry point** of the application. Initializes Flutter and loads the root widget. |
 | `lib/app.dart` | Defines the **app configuration**, including global theme, routes, and initial screen. |
 | `lib/core/constants.dart` | Centralized **constants** such as colors, API endpoints, and string values. |
 | `lib/core/helpers.dart` | Contains **utility functions** used throughout the app (e.g., date formatting, URL parsing). |
 | `lib/data/models/news_article_model.dart` | Defines the **data model** for news articles (title, author, image, source, etc.). |
+| `lib/data/repositories/news_repository.dart` | Defines the **repository contract** and implementation to abstract data fetching. |
+| `lib/locator.dart` | Configures the **service locator** (`get_it`) for dependency injection. |
 | `lib/data/news_api.dart` | Handles **HTTP requests** to fetch news data from external APIs. |
 | `lib/blocs/news_cubit.dart` | Implements **state management** using the Cubit pattern for loading and updating articles. |
 | `lib/pages/home_page.dart` | The **main screen** displaying the list of news articles fetched from the API. |
@@ -102,9 +109,9 @@ Below is an overview of the main branches currently used in the project:
 
 Below are the main screens of **Newsly**, showing its clean and functional interface:
 
-| 🏠 Home | 📄 News Detail |
-| :---: | :---: |
-| ![Home Screen](screenshots/home.jpeg) | ![News Detail](screenshots/detail.jpeg) |
+| 🏠 Home | 📄 News Detail | 📄 Another Detail |
+| :---: | :---: | :---: |
+| ![Home Screen](screenshots/home.jpeg) | ![News Detail](screenshots/detail.jpeg) | ![News Detail 2](screenshots/detail2.jpg) |
 
 Each screen represents a core part of the user flow:  
 - **Home:** Displays the latest top headlines retrieved from the API, allowing users to refresh and browse through current news.  
@@ -216,24 +223,10 @@ Although **Newsly** is a lightweight application, some small but important techn
 
 ---
 
-## 🤝 Contributions
-
-Contributions are welcome! If you wish to improve **Newsly**, please follow these steps:
-
-1. *Fork* the repository.  
-2. Create a new branch (`git checkout -b feature/AmazingFeature`).  
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`).  
-4. Push the branch (`git push origin feature/AmazingFeature`).  
-5. Open a *Pull Request*.
-
-
----
-
-## 🧑‍💻 Author
+## ‍💻 Author
 
 Developed with passion by:
 
 * **[German1127]** 💻
 
 *“Stay informed, stay curious.”* 🗞️
-
