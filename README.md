@@ -111,7 +111,7 @@ Below are the main screens of **Newsly**, showing its clean and functional inter
 
 | 🏠 Home | 📄 News Detail | 📄 Another Detail |
 | :---: | :---: | :---: |
-| ![Home Screen](screenshots/home.jpeg) | ![News Detail](screenshots/detail.jpeg) | ![News Detail 2](screenshots/detail2.jpg) |
+| ![Home Screen](screenshots/home.jpeg) | ![News Detail](screenshots/detail.jpeg) |
 
 Each screen represents a core part of the user flow:  
 - **Home:** Displays the latest top headlines retrieved from the API, allowing users to refresh and browse through current news.  
