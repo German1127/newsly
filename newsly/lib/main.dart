@@ -12,6 +12,5 @@ Future<void> main() async {
   setupLocator();
   
   await dotenv.load(fileName: ".env");
-  // Run the main application widget.
   runApp(const NewsApp());
 }

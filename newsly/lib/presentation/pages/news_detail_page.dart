@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../core/constants.dart';
-import '../core/helpers.dart';
-import '../data/models/news_article_model.dart';
+import '../../../core/constants.dart';
+import '../../../core/helpers.dart';
+import '../../../domain/entities/article_entity.dart';
 
 /// A page that displays the details of a single news article.
 class NewsDetailPage extends StatelessWidget {
@@ -19,7 +19,7 @@ class NewsDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // Get the article from the route arguments.
-    final article = ModalRoute.of(context)?.settings.arguments as NewsArticle?;
+    final article = ModalRoute.of(context)?.settings.arguments as ArticleEntity?;
 
     if (article == null) {
       return Scaffold(

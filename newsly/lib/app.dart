@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'blocs/news_cubit.dart';
 import 'core/constants.dart';
-import 'data/repositories/news_repository.dart';
-import 'pages/home_page.dart';
-import 'pages/news_detail_page.dart';
+import 'domain/usecases/get_top_headlines.dart';
+import 'presentation/blocs/news_cubit.dart';
+import 'presentation/pages/home_page.dart';
+import 'presentation/pages/news_detail_page.dart';
 import 'routes.dart';
 import 'locator.dart';
 
@@ -16,7 +16,7 @@ class NewsApp extends StatelessWidget {
   Widget build(BuildContext context) {
     // Provide the NewsCubit to the widget tree, injecting the Repository dependency.
     return BlocProvider(
-      create: (context) => NewsCubit(newsRepository: locator<NewsRepository>()),
+      create: (context) => NewsCubit(getTopHeadlines: locator<GetTopHeadlines>()),
       child: MaterialApp(
         title: kAppTitle,
         debugShowCheckedModeBanner: false,

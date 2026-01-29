@@ -1,23 +1,16 @@
-/// Data model for a News Article.
-class NewsArticle {
-  final String? author;
-  final String title;
-  final String? description;
-  final String? url;
-  final String? urlToImage;
-  final String publishedAt;
-  final String? content;
-  final String? sourceName;
+import '../../domain/entities/article_entity.dart';
 
-  NewsArticle({
-    this.author,
-    required this.title,
-    this.description,
-    this.url,
-    this.urlToImage,
-    required this.publishedAt,
-    this.content,
-    this.sourceName,
+// Data model for a news article. Extends the domain entity
+class NewsArticle extends ArticleEntity {
+  const NewsArticle({
+    super.author,
+    required super.title,
+    super.description,
+    super.url,
+    super.urlToImage,
+    required super.publishedAt,
+    super.content,
+    super.sourceName,
   });
 
   /// Factory constructor to create a NewsArticle instance from a JSON map.

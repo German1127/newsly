@@ -57,26 +57,18 @@ This application is built with **Flutter** and leverages a set of modern, reliab
 
 ## 🏗️ Project Structure
 
-The project follows a **modular and scalable architecture**, separating presentation, logic, and data layers to maintain clarity and reusability.
+The project follows the **Clean Architecture** principles to ensure a modular, scalable, and testable codebase. The core idea is a separation of concerns into distinct layers.
 
 | File / Folder | Description |
 | :--- | :--- |
-| `.env` | **Environment variables file**. Stores sensitive data like API keys. (Not versioned) |
-| `lib/main.dart` | The **main entry point** of the application. Initializes Flutter and loads the root widget. |
-| `lib/app.dart` | Defines the **app configuration**, including global theme, routes, and initial screen. |
-| `lib/core/constants.dart` | Centralized **constants** such as colors, API endpoints, and string values. |
-| `lib/core/helpers.dart` | Contains **utility functions** used throughout the app (e.g., date formatting, URL parsing). |
-| `lib/data/models/news_article_model.dart` | Defines the **data model** for news articles (title, author, image, source, etc.). |
-| `lib/data/repositories/news_repository.dart` | Defines the **repository contract** and implementation to abstract data fetching. |
-| `lib/locator.dart` | Configures the **service locator** (`get_it`) for dependency injection. |
-| `lib/data/news_api.dart` | Handles **HTTP requests** to fetch news data from external APIs. |
-| `lib/blocs/news_cubit.dart` | Implements **state management** using the Cubit pattern for loading and updating articles. |
-| `lib/pages/home_page.dart` | The **main screen** displaying the list of news articles fetched from the API. |
-| `lib/pages/news_detail_page.dart` | **Detail screen** showing the full content of a selected news article. |
-| `lib/widgets/news_card.dart` | **Reusable widget** to display an article preview within lists. |
-| `lib/widgets/news_list.dart` | Builds and manages the **list view of news cards** on the home screen. |
-| `lib/routes.dart` | Centralized **route configuration** for navigation between pages. |
-| `assets/images/` | Folder for **image resources** (placeholders, icons, etc.). |
+| `docs/` | **Project documentation**. Contains detailed technical documents, such as architecture decisions and refactoring logs. |
+| `lib/` | **Application source code**, structured according to Clean Architecture. |
+| `lib/domain/` | **Domain Layer**: Contains the core business logic, entities (`ArticleEntity`), and repository interfaces (`ArticleRepository`). It has no dependencies on other layers. |
+| `lib/data/` | **Data Layer**: Implements the repository interfaces. It handles data fetching from APIs (`NewsApi`), data models (`NewsArticle`), and repository implementations. |
+| `lib/presentation/` | **Presentation Layer**: Contains all UI-related components, such as pages, widgets, and state management (`NewsCubit`). |
+| `lib/core/` | **Core Utilities**: Shared code, such as constants and helper functions, used across different layers (except Domain). |
+| `lib/main.dart` | The **main entry point** of the application. Initializes dependencies (`dotenv`, `locator`) and runs the app. |
+| `lib/locator.dart` | Configures the **service locator** (`get_it`) for dependency injection, connecting the layers. |
 
 
 📁 This structure ensures:
@@ -96,6 +88,7 @@ Below is an overview of the main branches currently used in the project:
 | :--- | :--- | :--- | :--- |
 | **`main`** | **Base / Production** | Represents the most **stable and fully functional** version of the application. All completed features and design improvements are merged here after testing. | Contains the latest integrated version of **Newsly**, ready for demonstration or deployment. |
 | **`frontend`** | **UI / Enhancement** | Dedicated to the **user interface development** and visual refinement of the app. | Focused on improving layout, typography, colors, and overall **Flutter UI design** consistency for a polished experience. |
+| **`refactor/clean-architecture`** | **Refactor / Architecture** | Dedicated to refactoring the project to implement **Clean Architecture** principles as defined by Robert C. Martin. | The goal is to improve code structure, scalability, and testability by separating concerns into distinct layers (Domain, Data, Presentation). |
 
 
 🧩 This branching strategy allows for:

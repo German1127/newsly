@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../core/constants.dart';
 import '../blocs/news_cubit.dart';
-import '../core/constants.dart';
 import '../widgets/news_list.dart';
 
 /// The main page that displays the list of top headlines.

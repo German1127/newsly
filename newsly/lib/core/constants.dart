@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 /// API Key.
-/// IMPORTANT: This is loaded from the .env file.
+/// This is loaded from the .env file.
 const String kApiKey = ''; 
 
 /// Base URL for the News API.
@@ -14,9 +14,9 @@ const String kTopHeadlinesPath = '/top-headlines';
 const String kCountryCode = 'us';
 
 /// Main Colors
-const Color kPrimaryColor = Color(0xFF0F172A); // Dark Blue (Slate 900)
-const Color kAccentColor = Color(0xFFE11D48); // Rose Red (Rose 600)
-const Color kBackgroundColor = Color(0xFFF8FAFC); // Off-white (Slate 50)
+const Color kPrimaryColor = Color(0xFF0F172A);
+const Color kAccentColor = Color(0xFFE11D48);
+const Color kBackgroundColor = Color(0xFFF8FAFC);
 
 /// Strings and Texts
 const String kAppTitle = 'Noticias Globales';

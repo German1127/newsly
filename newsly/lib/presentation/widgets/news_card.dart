@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import '../core/constants.dart';
-import '../data/models/news_article_model.dart';
-import '../routes.dart';
+import '../../../core/constants.dart';
+import '../../../domain/entities/article_entity.dart';
+import '../../../routes.dart';
 
-/// Widget para mostrar la vista compacta de una noticia en la lista.
+// Widget to display the compact view of a news item in the list.
 class NewsCard extends StatelessWidget {
-  final NewsArticle article;
+  final ArticleEntity article;
 
   const NewsCard({super.key, required this.article});
 
@@ -16,7 +16,7 @@ class NewsCard extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: InkWell(
-        // Navegar a la página de detalles
+        // Navigate to the details page.
         onTap: () {
           Navigator.pushNamed(
             context,
