@@ -44,3 +44,25 @@ lib
     * The `NewsCard` widgets and the `NewsDetailPage` now depend on the `ArticleEntity` from the domain instead of the `NewsArticle` model from the data layer. This complies with the Dependency Rule.
 
 4. **Dependency Injection (`locator.dart`):** This has been updated to register the new classes, injecting implementations (`NewsRepositoryImpl`) where abstractions (`ArticleRepository`) are required.
+
+## Step 2: SOLID Refactoring and Strict Compliance
+
+### 1. Strict Dependency Rule Compliance
+**Problem:**
+The `core/constants.dart` file mixed UI constants (colors, texts) with API constants (URLs, Keys). This caused the **Data** layer (`NewsApi`) to have a transitive dependency on the UI framework (`flutter/material.dart`) by importing that file.
+
+**Solution:**
+* Created `lib/core/api_constants.dart` exclusively for data configurations (Pure Dart).
+* Cleaned `lib/core/constants.dart` to leave only design elements.
+* **Result:** The Data layer is now completely agnostic of the user interface, strictly complying with the rule that dependencies must point inwards and inner layers must not know about outer ones.
+
+### 2. Open/Closed Principle (OCP) & Dependency Inversion Principle (DIP)
+**Problem:**
+The `NewsApi` class was a concrete implementation. If changing the HTTP library or using mock data was required, the existing code consuming this class had to be modified, violating OCP.
+
+**Solution:**
+* Defined an abstract interface (contract) `NewsRemoteDataSource` in the Data layer.
+* `NewsApi` now implements `NewsRemoteDataSource`.
+* **Result:**
+    * **OCP:** The system is open for extension (we can create new implementations like `DioRemoteDataSource` or `MockRemoteDataSource`) but closed for modification.
+    * **DIP:** The Repository and other consumers now depend on the abstraction (`NewsRemoteDataSource`), not the concrete implementation (`NewsApi`).

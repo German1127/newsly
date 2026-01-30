@@ -3,9 +3,10 @@ import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import '../../core/api_constants.dart';
 import '../models/news_article_model.dart';
+import 'news_remote_data_source.dart';
 
 /// Handles communication with the News API.
-class NewsApi {
+class NewsApi implements NewsRemoteDataSource {
   
   /// The HTTP client for making requests.
   final http.Client httpClient;
@@ -13,6 +14,7 @@ class NewsApi {
   NewsApi({required this.httpClient});
 
   /// Fetches the top headlines from the API.
+  @override
   Future<List<NewsArticle>> fetchTopHeadlines() async {
     final apiKey = dotenv.env['NEWS_API_KEY'];
     final url = Uri.parse(
