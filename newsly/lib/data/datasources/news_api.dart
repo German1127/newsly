@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import '../../core/constants.dart';
+import '../../core/api_constants.dart';
 import '../models/news_article_model.dart';
 
 /// Handles communication with the News API.
@@ -31,7 +31,6 @@ class NewsApi {
               .map((json) => NewsArticle.fromJson(json as Map<String, dynamic>))
               .toList();
         } else {
-          // Handle API-level errors (e.g., invalid key, rate limit).
           throw Exception('Error en la respuesta de la API: ${data['message']}');
         }
       } else {
@@ -39,7 +38,6 @@ class NewsApi {
         throw Exception('Fallo al cargar noticias. Código de estado: ${response.statusCode}');
       }
     } catch (e) {
-      // Handle network errors or other exceptions.
       throw Exception('Excepción al realizar la petición: $e');
     }
   }
